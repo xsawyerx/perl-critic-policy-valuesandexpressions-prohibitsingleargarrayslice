@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+0.003     2016-12-21 17:18:00+01:00 Europe/Amsterdam
+
 0.003
     * Remove false positives. This now only detect a single digit
       used. It might get smarter in the future, recognizing constants.
