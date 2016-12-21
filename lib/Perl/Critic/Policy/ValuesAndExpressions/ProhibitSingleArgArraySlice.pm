@@ -4,8 +4,8 @@ package Perl::Critic::Policy::ValuesAndExpressions::ProhibitSingleArgArraySlice;
 use strict;
 use warnings;
 
-use Perl::Critic::Utils qw(:severities :classification :ppi);
 use parent 'Perl::Critic::Policy';
+use Perl::Critic::Utils qw(:severities :classification :ppi);
 
 our $VERSION = '0.001';
 
@@ -16,7 +16,7 @@ use constant 'EXPL' => 'Using an array slice returns a list, '
                      . 'single value access, not array slice.';
 
 sub supported_parameters { () }
-sub default_severity     {$SEVERITY_HIGHEST}
+sub default_severity     {$SEVERITY_HIGH}
 sub default_themes       {'bugs'}
 sub applies_to           {'PPI::Token::Symbol'}
 
@@ -70,8 +70,7 @@ __END__
 
 When using an array slice C<@foo[]>, you can retrieve multiple values by
 giving more than one index. Sometimes, however, either due to typo or
-inexperience, we might only provide a single index. This is a problem due
-to the list context enforced.
+inexperience, we might only provide a single index.
 
 Perl warns you about this, but it will only do this during runtime. This
 policy allows you to detect it statically.
@@ -82,7 +81,7 @@ policy allows you to detect it statically.
   # List context, multiple values retrieved
   my @values    = @array[ $index1, $index2 ] # ok
 
-  # Scalar context, single value retrived - the last item in the array!
+  # Scalar context, single value retrived (the last item in the array)
   # Perl will warn you, but only in runtime
   my $value     = @array[$index];            # not ok
 
