@@ -1,0 +1,47 @@
+# NAME
+
+Perl::Critic::Policy::ValuesAndExpressions::ProhibitSingleArgArraySlice - Prohibit using an array slice with only one index
+
+# VERSION
+
+version 0.001
+
+# DESCRIPTION
+
+When using an array slice `@foo[]`, you can retrieve multiple values by
+giving more than one index. Sometimes, however, either due to typo or
+inexperience, we might only provide a single index. This is a problem due
+to the list context enforced.
+
+Perl warns you about this, but it will only do this during runtime. This
+policy allows you to detect it statically.
+
+    # scalar context, single value retrieved
+    my $one_value = $array[$index];            # ok
+
+    # List context, multiple values retrieved
+    my @values    = @array[ $index1, $index2 ] # ok
+
+    # List context, single value retrived - the size of the array!
+    # Perl will warn you, but only in runtime
+    my $value     = @array[$index];            # not ok
+
+# CONFIGURATION
+
+This policy is not configurable except for the standard options.
+
+# SEE ALSO
+
+[Perl::Critic](https://metacpan.org/pod/Perl::Critic)
+
+# AUTHOR
+
+Sawyer X <xsawyerx@cpan.org>
+
+# COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2016 by Sawyer X.
+
+This is free software, licensed under:
+
+    The MIT (X11) License
