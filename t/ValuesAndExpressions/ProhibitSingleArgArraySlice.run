@@ -17,3 +17,5 @@ if (@Things) {...}
 @arr[ some_func() ];
 $arr[3]
 @{ $arr[3] }
+my ($rd, $action, $tmpl) = @opts{qw(rd action tmpl)};
+
