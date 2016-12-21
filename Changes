@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+0.004     2016-12-21 17:20:34+01:00 Europe/Amsterdam
+
     * Remove secondary $VERSION variable. Whoops.
 
 0.003     2016-12-21 17:18:00+01:00 Europe/Amsterdam
