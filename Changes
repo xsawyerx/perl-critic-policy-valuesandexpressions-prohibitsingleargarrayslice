@@ -1,5 +1,10 @@
 {{$NEXT}}
 
+0.003
+    * Remove false positives. This now only detect a single digit
+      used. It might get smarter in the future, recognizing constants.
+    * GH #1: Correct wording. Sorry for spotting, Vincent Pit!
+
 0.002     2016-12-21 13:07:24+01:00 Europe/Amsterdam
 
     * Fix dependencies.
