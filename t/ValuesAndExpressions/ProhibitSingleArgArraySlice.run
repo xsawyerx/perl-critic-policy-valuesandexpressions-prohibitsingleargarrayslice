@@ -10,6 +10,9 @@ $thing = @arr[3];
 ## failures 0
 ## cut
 
+my @values = @stuff[@more_stuff]
+my @values = @stuff[keys %hash]
+if (@Things) {...}
 @arr[ 3, 2 ];
 @arr[ some_func() ];
 $arr[3]

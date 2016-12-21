@@ -31,21 +31,37 @@ sub violates {
         or return ();
 
     my $next = $elem->snext_sibling;
-    $next->isa('PPI::Structure::Subscript')
+    $next && $next->isa('PPI::Structure::Subscript')
         or return ();
 
     my @children = $next->children;
     @children > 1
         and return ();
 
-    @children == 1
-        and return $self->violation( DESC(), EXPL(), $next );
+    @children == 0
+        and return $self->violation( 'Empty subscript',
+        'You have an array slice with an empty subscript', $next, );
 
-    return $self->violation(
-        'Empty subscript',
-        'You have an array slice with an empty subscript',
-        $next,
-    );
+    my $child = $children[0];
+
+    my @child_elements = $child->elements;
+
+    @child_elements > 1
+        and return ();
+
+    @children == 0
+        and return $self->violation( 'Empty expression subscript',
+        'You have an array slice with an empty expression subscript',
+        $next, );
+
+    my $element = $child_elements[0];
+
+    $element->isa('PPI::Token::Symbol') && substr( $element, 0, 1 ) eq '@'
+        and return ();
+
+    # @foo[1]
+    #use PPI::Dumper; PPI::Dumper->new($element)->print;
+    return $self->violation( DESC(), EXPL(), $next );
 }
 
 1;
