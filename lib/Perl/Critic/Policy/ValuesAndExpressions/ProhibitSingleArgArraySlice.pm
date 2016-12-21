@@ -7,8 +7,6 @@ use warnings;
 use parent 'Perl::Critic::Policy';
 use Perl::Critic::Utils qw(:severities :classification :ppi);
 
-our $VERSION = '0.001';
-
 use constant 'DESC' => 'Single argument to array slice';
 use constant 'EXPL' => 'Using an array slice returns a list, '
                      . 'even when accessing a single value. '
