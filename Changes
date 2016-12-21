@@ -1,6 +1,7 @@
 {{$NEXT}}
 
-    * Fixed the changes file. Whoops.
+    * Fix dependencies.
+    * Fix Changes file.
 
 0.001   2016-12-21 13:04:23+01:00 Europe/Amsterdam
     * Initial release.
