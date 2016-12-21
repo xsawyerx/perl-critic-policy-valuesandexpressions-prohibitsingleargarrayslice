@@ -42,8 +42,7 @@ sub violates {
         and return $self->violation( 'Empty subscript',
         'You have an array slice with an empty subscript', $next, );
 
-    my $child = $children[0];
-
+    my $child          = $children[0];
     my @child_elements = $child->elements;
 
     @child_elements > 1
@@ -56,11 +55,10 @@ sub violates {
 
     my $element = $child_elements[0];
 
-    $element->isa('PPI::Token::Symbol') && substr( $element, 0, 1 ) eq '@'
-        and return ();
-
     # @foo[1]
-    #use PPI::Dumper; PPI::Dumper->new($element)->print;
+    $element->isa('PPI::Token::Number')
+        or return ();
+
     return $self->violation( DESC(), EXPL(), $next );
 }
 
