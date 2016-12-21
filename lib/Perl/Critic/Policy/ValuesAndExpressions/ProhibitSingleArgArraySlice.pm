@@ -82,7 +82,7 @@ policy allows you to detect it statically.
   # List context, multiple values retrieved
   my @values    = @array[ $index1, $index2 ] # ok
 
-  # List context, single value retrived - the size of the array!
+  # Scalar context, single value retrived - the last item in the array!
   # Perl will warn you, but only in runtime
   my $value     = @array[$index];            # not ok
 
